@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "concurrently \"ng serve\" \"node api/index.js\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,8 +31,11 @@
     "@angular/cli": "~10.0.4",
     "@angular/compiler-cli": "~10.0.5",
     "@types/node": "^12.11.1",
+    "apollo-server": "^2.18.0",
+    "concurrently": "^5.3.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.5"
+    "typescript": "~3.9.5",
+    "uuid": "^8.3.0"
   }
 }
