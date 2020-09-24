@@ -1,0 +1,9 @@
+fragment Recipe on Recipe {
+  id
+  title
+  imageUrl
+  estimatedTime
+  serves
+  steps
+  ingredients
+}

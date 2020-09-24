@@ -1,0 +1,11 @@
+query Recipes {
+  recipes {
+    ...Recipe
+  }
+}
+
+query Recipe($id: ID!) {
+  recipe(id: $id) {
+    ...Recipe
+  }
+}

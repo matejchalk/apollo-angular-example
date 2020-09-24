@@ -1,0 +1,45 @@
+mutation CreateRecipe(
+  $title: String!
+  $imageUrl: String
+  $estimatedTime: Int
+  $serves: Int
+  $ingredients: [String!]
+  $steps: [String!]
+) {
+  createRecipe(
+    title: $title
+    imageUrl: $imageUrl
+    estimatedTime: $estimatedTime
+    serves: $serves
+    ingredients: $ingredients
+    steps: $steps
+  ) {
+    ...Recipe
+  }
+}
+
+mutation UpdateRecipe(
+  $id: ID!
+  $title: String!
+  $imageUrl: String
+  $estimatedTime: Int
+  $serves: Int
+  $ingredients: [String!]
+  $steps: [String!]
+) {
+  updateRecipe(
+    id: $id
+    title: $title
+    imageUrl: $imageUrl
+    estimatedTime: $estimatedTime
+    serves: $serves
+    ingredients: $ingredients
+    steps: $steps
+  ) {
+    ...Recipe
+  }
+}
+
+mutation DeleteRecipe($id: ID!) {
+  deleteRecipe(id: $id)
+}
