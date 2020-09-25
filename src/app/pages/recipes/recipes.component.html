@@ -1,0 +1,68 @@
+<nz-page-header>
+  <nz-page-header-title>Recipes</nz-page-header-title>
+  <nz-page-header-extra>
+    <a nz-button nzType="primary" [routerLink]="['/create-recipe']">
+      <i nz-icon nzType="plus"></i>
+      Create recipe
+    </a>
+  </nz-page-header-extra>
+  <nz-page-header-content>
+    <nz-table [nzData]="recipes" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Image</th>
+          <th>Estimated time</th>
+          <th>Serves</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.title }}</td>
+          <td>
+            <nz-avatar
+              [nzSrc]="recipe.imageUrl || undefined"
+              nzIcon="picture"
+              nzSize="large"
+              nzShape="square"
+            ></nz-avatar>
+          </td>
+          <td>
+            {{
+              recipe.estimatedTime
+                ? recipe.estimatedTime.toString() + ' mins'
+                : '-'
+            }}
+          </td>
+          <td>
+            {{ recipe.serves ? recipe.serves.toString() + ' people' : '-' }}
+          </td>
+          <td>
+            <nz-space>
+              <nz-space-item>
+                <a nz-button [routerLink]="['/recipe', recipe.id]">
+                  <i nz-icon nzType="eye"></i>
+                </a>
+              </nz-space-item>
+              <nz-space-item>
+                <a
+                  nz-button
+                  nzType="primary"
+                  [routerLink]="['/update-recipe', recipe.id]"
+                >
+                  <i nz-icon nzType="edit"></i>
+                </a>
+              </nz-space-item>
+              <nz-space-item>
+                <button nz-button nzDanger>
+                  <i nz-icon nzType="delete"></i>
+                </button>
+              </nz-space-item>
+            </nz-space>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-page-header-content>
+</nz-page-header>

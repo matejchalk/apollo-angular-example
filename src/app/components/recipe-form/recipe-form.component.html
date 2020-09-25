@@ -1,0 +1,66 @@
+<form nz-form [formGroup]="recipeForm" (ngSubmit)="handleSubmit()">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="recipeTitle" nzRequired>
+      Title
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Title is required">
+      <input nz-input formControlName="title" id="recipeTitle" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="imageUrl">Image</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <input nz-input formControlName="imageUrl" id="imageUrl" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="estimatedTime"
+      >Estimated time</nz-form-label
+    >
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-input-number
+        formControlName="estimatedTime"
+        id="estimatedTime"
+        [nzMin]="0"
+        [nzStep]="1"
+        [nzFormatter]="timeFormatter"
+        [nzParser]="timeParser"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="serves">
+      # of people served
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <nz-input-number
+        formControlName="serves"
+        id="serves"
+        [nzMin]="0"
+        [nzStep]="1"
+      ></nz-input-number>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="description">
+      Description
+    </nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24">
+      <textarea
+        nz-input
+        formControlName="description"
+        id="description"
+      ></textarea>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row>
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Save</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

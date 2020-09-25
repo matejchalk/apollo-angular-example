@@ -1,7 +1,11 @@
 const { v4: uuidv4 } = require('uuid');
+const { recipes } = require('./seed');
 
 class DbClient {
-  recipes = {};
+  recipes = recipes.reduce(
+    (acc, recipe) => ({ ...acc, [recipe.id]: recipe }),
+    {}
+  );
 
   getRecipe(id) {
     return this.recipes[id];

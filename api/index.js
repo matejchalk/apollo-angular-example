@@ -13,8 +13,7 @@ const typeDefs = gql`
       imageUrl: String
       estimatedTime: Int
       serves: Int
-      ingredients: [String!]
-      steps: [String!]
+      description: String
     ): Recipe!
     updateRecipe(
       id: ID!
@@ -22,8 +21,7 @@ const typeDefs = gql`
       imageUrl: String
       estimatedTime: Int
       serves: Int
-      ingredients: [String!]
-      steps: [String!]
+      description: String
     ): Recipe!
     deleteRecipe(id: ID!): ID
   }
@@ -34,8 +32,7 @@ const typeDefs = gql`
     imageUrl: String
     estimatedTime: Int
     serves: Int
-    ingredients: [String!]
-    steps: [String!]
+    description: String
   }
 `;
 

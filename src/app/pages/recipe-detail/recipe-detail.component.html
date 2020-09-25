@@ -1,0 +1,46 @@
+<nz-page-header nzBackIcon>
+  <nz-page-header-title>Recipe</nz-page-header-title>
+  <nz-page-header-subtitle>{{ recipe.title }}</nz-page-header-subtitle>
+  <nz-page-header-extra>
+    <nz-space>
+      <nz-space-item>
+        <a
+          nz-button
+          nzType="primary"
+          [routerLink]="['/update-recipe', recipe.id]"
+        >
+          <i nz-icon nzType="edit"></i>
+          Edit
+        </a>
+      </nz-space-item>
+      <nz-space-item>
+        <button nz-button nzDanger>
+          <i nz-icon nzType="delete"></i>
+          Delete
+        </button>
+      </nz-space-item>
+    </nz-space>
+  </nz-page-header-extra>
+
+  <nz-page-header-content>
+    <nz-card
+      style="max-width: 600px; margin: 0 auto"
+      [nzExtra]="extra"
+      [nzCover]="cover"
+    >
+      <nz-card-meta
+        [nzTitle]="recipe.title"
+        [nzDescription]="recipe.description || null"
+      ></nz-card-meta>
+    </nz-card>
+    <ng-template #cover>
+      <img *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" />
+    </ng-template>
+    <ng-template #extra>
+      <nz-tag *ngIf="recipe.estimatedTime">
+        {{ recipe.estimatedTime }} minutes
+      </nz-tag>
+      <nz-tag *ngIf="recipe.serves"> serves {{ recipe.serves }} people </nz-tag>
+    </ng-template>
+  </nz-page-header-content>
+</nz-page-header>

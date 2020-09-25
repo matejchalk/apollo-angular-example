@@ -40,8 +40,7 @@ export type MutationCreateRecipeArgs = {
   imageUrl?: Maybe<Scalars['String']>;
   estimatedTime?: Maybe<Scalars['Int']>;
   serves?: Maybe<Scalars['Int']>;
-  ingredients?: Maybe<Array<Scalars['String']>>;
-  steps?: Maybe<Array<Scalars['String']>>;
+  description?: Maybe<Scalars['String']>;
 };
 
 
@@ -51,8 +50,7 @@ export type MutationUpdateRecipeArgs = {
   imageUrl?: Maybe<Scalars['String']>;
   estimatedTime?: Maybe<Scalars['Int']>;
   serves?: Maybe<Scalars['Int']>;
-  ingredients?: Maybe<Array<Scalars['String']>>;
-  steps?: Maybe<Array<Scalars['String']>>;
+  description?: Maybe<Scalars['String']>;
 };
 
 
@@ -67,8 +65,7 @@ export type Recipe = {
   imageUrl?: Maybe<Scalars['String']>;
   estimatedTime?: Maybe<Scalars['Int']>;
   serves?: Maybe<Scalars['Int']>;
-  ingredients?: Maybe<Array<Scalars['String']>>;
-  steps?: Maybe<Array<Scalars['String']>>;
+  description?: Maybe<Scalars['String']>;
 };
 
 export enum CacheControlScope {
@@ -79,7 +76,7 @@ export enum CacheControlScope {
 
 export type RecipeFragment = (
   { __typename?: 'Recipe' }
-  & Pick<Recipe, 'id' | 'title' | 'imageUrl' | 'estimatedTime' | 'serves' | 'steps' | 'ingredients'>
+  & Pick<Recipe, 'id' | 'title' | 'imageUrl' | 'estimatedTime' | 'serves' | 'description'>
 );
 
 export type CreateRecipeMutationVariables = Exact<{
@@ -87,8 +84,7 @@ export type CreateRecipeMutationVariables = Exact<{
   imageUrl?: Maybe<Scalars['String']>;
   estimatedTime?: Maybe<Scalars['Int']>;
   serves?: Maybe<Scalars['Int']>;
-  ingredients?: Maybe<Array<Scalars['String']>>;
-  steps?: Maybe<Array<Scalars['String']>>;
+  description?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -106,8 +102,7 @@ export type UpdateRecipeMutationVariables = Exact<{
   imageUrl?: Maybe<Scalars['String']>;
   estimatedTime?: Maybe<Scalars['Int']>;
   serves?: Maybe<Scalars['Int']>;
-  ingredients?: Maybe<Array<Scalars['String']>>;
-  steps?: Maybe<Array<Scalars['String']>>;
+  description?: Maybe<Scalars['String']>;
 }>;
 
 
@@ -160,13 +155,12 @@ export const RecipeFragmentDoc = gql`
   imageUrl
   estimatedTime
   serves
-  steps
-  ingredients
+  description
 }
     `;
 export const CreateRecipeDocument = gql`
-    mutation CreateRecipe($title: String!, $imageUrl: String, $estimatedTime: Int, $serves: Int, $ingredients: [String!], $steps: [String!]) {
-  createRecipe(title: $title, imageUrl: $imageUrl, estimatedTime: $estimatedTime, serves: $serves, ingredients: $ingredients, steps: $steps) {
+    mutation CreateRecipe($title: String!, $imageUrl: String, $estimatedTime: Int, $serves: Int, $description: String) {
+  createRecipe(title: $title, imageUrl: $imageUrl, estimatedTime: $estimatedTime, serves: $serves, description: $description) {
     ...Recipe
   }
 }
@@ -180,8 +174,8 @@ export const CreateRecipeDocument = gql`
     
   }
 export const UpdateRecipeDocument = gql`
-    mutation UpdateRecipe($id: ID!, $title: String!, $imageUrl: String, $estimatedTime: Int, $serves: Int, $ingredients: [String!], $steps: [String!]) {
-  updateRecipe(id: $id, title: $title, imageUrl: $imageUrl, estimatedTime: $estimatedTime, serves: $serves, ingredients: $ingredients, steps: $steps) {
+    mutation UpdateRecipe($id: ID!, $title: String!, $imageUrl: String, $estimatedTime: Int, $serves: Int, $description: String) {
+  updateRecipe(id: $id, title: $title, imageUrl: $imageUrl, estimatedTime: $estimatedTime, serves: $serves, description: $description) {
     ...Recipe
   }
 }

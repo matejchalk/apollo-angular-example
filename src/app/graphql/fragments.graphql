@@ -4,6 +4,5 @@ fragment Recipe on Recipe {
   imageUrl
   estimatedTime
   serves
-  steps
-  ingredients
+  description
 }
