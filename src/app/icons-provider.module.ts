@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
+  ArrowLeftOutline,
   DashboardOutline,
   DeleteOutline,
   EditOutline,
@@ -20,6 +21,7 @@ const icons = [
   DeleteOutline,
   PictureOutline,
   PlusOutline,
+  ArrowLeftOutline,
 ];
 
 @NgModule({

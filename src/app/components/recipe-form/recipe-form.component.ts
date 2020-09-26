@@ -1,6 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CreateRecipeMutationVariables } from '../../graphql/generated';
+import {
+  CreateRecipeMutationVariables,
+  RecipeFragment,
+} from '../../graphql/generated';
 
 @Component({
   selector: 'app-recipe-form',
@@ -18,6 +21,17 @@ export class RecipeFormComponent {
   });
   readonly timeFormatter = (value: number) => (!value ? '' : `${value} mins`);
   readonly timeParser = (value: string) => value.replace(' mins', '');
+
+  @Input() set initialValue(recipe: RecipeFragment) {
+    const { title, imageUrl, estimatedTime, serves, description } = recipe;
+    this.recipeForm.setValue({
+      title,
+      imageUrl,
+      estimatedTime,
+      serves,
+      description,
+    });
+  }
 
   constructor(private readonly fb: FormBuilder) {}
 

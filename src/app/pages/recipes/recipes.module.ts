@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import {
   NzAvatarModule,
   NzButtonModule,
+  NzMessageModule,
   NzPageHeaderModule,
   NzTableModule,
 } from 'ng-zorro-antd';
@@ -21,6 +22,7 @@ import { RecipesComponent } from './recipes.component';
     NzButtonModule,
     NzSpaceModule,
     NzPageHeaderModule,
+    NzMessageModule,
   ],
   declarations: [RecipesComponent],
   exports: [RecipesComponent],

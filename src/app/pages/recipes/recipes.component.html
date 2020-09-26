@@ -7,7 +7,11 @@
     </a>
   </nz-page-header-extra>
   <nz-page-header-content>
-    <nz-table [nzData]="recipes" [nzShowPagination]="false">
+    <nz-table
+      [nzData]="(recipes$ | async) || []"
+      [nzLoading]="loading$ | async"
+      [nzShowPagination]="false"
+    >
       <thead>
         <tr>
           <th>Title</th>
@@ -18,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let recipe of recipes">
+        <tr *ngFor="let recipe of recipes$ | async">
           <td>{{ recipe.title }}</td>
           <td>
             <nz-avatar
@@ -55,7 +59,7 @@
                 </a>
               </nz-space-item>
               <nz-space-item>
-                <button nz-button nzDanger>
+                <button nz-button nzDanger (click)="handleDelete(recipe)">
                   <i nz-icon nzType="delete"></i>
                 </button>
               </nz-space-item>
