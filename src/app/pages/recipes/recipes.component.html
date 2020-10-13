@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let recipe of recipes$ | async">
+        <tr *ngFor="let recipe of recipes$ | async; trackBy: trackByRecipeId">
           <td>{{ recipe.title }}</td>
           <td>
             <nz-avatar

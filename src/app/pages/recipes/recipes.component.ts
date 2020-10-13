@@ -29,11 +29,19 @@ export class RecipesComponent {
     private readonly message: NzMessageService
   ) {}
 
+  trackByRecipeId(_: number, recipe: RecipeFragment): string {
+    return recipe.id;
+  }
+
   handleDelete({ id, title }: RecipeFragment): void {
     this.deleteRecipeGQL
       .mutate(
         { id },
         {
+          optimisticResponse: {
+            __typename: 'Mutation',
+            deleteRecipe: id,
+          },
           update: store => {
             const data = store.readQuery<RecipesQuery>({
               query: RecipesDocument,
